@@ -24,6 +24,13 @@ tv_lobby.controller = function() {
 	tv_lobby.vm.add("me");
 	tv_lobby.vm.add("you");
 	tv_lobby.vm.add("kevin");
+	tv_lobby.vm.add("maks");
+	tv_lobby.vm.add("alex");
+	tv_lobby.vm.add("chris");
+	tv_lobby.vm.add("nikhil");
+	tv_lobby.vm.add("erin");
+	tv_lobby.vm.add("karla");
+	tv_lobby.vm.add("ashley");
 };
 
 tv_lobby.view = function() {
