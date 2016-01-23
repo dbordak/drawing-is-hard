@@ -9,3 +9,11 @@ button.choice {
 button.choice:disabled {
 	background-color: grey;
 }
+
+.prompt-vote-button {
+	text-align: center;
+}
+
+#prompt-vote-title {
+	text-align: center;
+}
