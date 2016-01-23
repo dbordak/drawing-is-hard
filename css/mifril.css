@@ -30,3 +30,14 @@ button.choice:disabled {
 	text-transform: lowercase;
 	text-align: center;
 }
+
+.revealed-prompt, .revealed-author {
+	display: inline;
+	margin: 2px;
+}
+.revealed-prompt {
+	font-size: 20pt;
+}
+.revealed-votes {
+	margin: 2px;
+}
