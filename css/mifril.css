@@ -8,6 +8,7 @@ button.choice {
 
 button.choice:disabled {
 	background-color: grey;
+	color: white;
 }
 
 .prompt-vote-button {
@@ -20,4 +21,12 @@ button.choice:disabled {
 
 .literally label {
 	display: inline;
+}
+
+.player-name {
+	display: block;
+	margin: 2px;
+	font-size: 20pt;
+	text-transform: lowercase;
+	text-align: center;
 }
