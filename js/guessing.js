@@ -51,6 +51,8 @@ guessing.controller = function() {
 	//guessing.vm.add("losing your hand");
 	//guessing.vm.add("car accident");
 	//guessing.vm.add("furry convention");
+	//guessing.vm.add("aesthetic");
+	//guessing.vm.add("op");
 };
 
 guessing.view = function() {
