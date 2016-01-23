@@ -17,10 +17,18 @@
 	<link href="css/mifril.css" rel="stylesheet">
 	<script src="js/mithril.min.js"></script>
 
-	<script src="js/voter.js"></script>
+	<script src="js/selector.js"></script>
+	<script src="js/landing.js"></script>
+	<script src="js/lobby.js"></script>
+	<script src="js/voting.js"></script>
 </head>
 <body></body>
 <script>
-m.mount(document.body, {controller: voter.controller, view: voter.view});
+ m.route(document.body, "/", {
+	 "/": selector,
+	 "/landing": landing,
+	 "/lobby": lobby,
+	 "/voting": voting,
+ });
 </script>
 </html>
