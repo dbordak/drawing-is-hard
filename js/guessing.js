@@ -38,12 +38,11 @@ guessing.controller = function() {
 	guessing.vm.add("stone mask");
 	guessing.vm.add("Italy");
 	//guessing.vm.add("i'd rather flex my knuckles");
-	guessing.vm.add("a horse");
+	guessing.vm.add("a party horse");
 	guessing.vm.add("a horse with arms");
 	guessing.vm.add("getting frisky");
 	guessing.vm.add("a dog petting a dog");
-	guessing.vm.add("a snow poff");
-	//guessing.vm.add("a potato with arms");
+	guessing.vm.add("a potato with arms");
 	//guessing.vm.add("the colonel");
 	//guessing.vm.add("a bird with arms");
 	//guessing.vm.add("two trucks");
@@ -52,7 +51,6 @@ guessing.controller = function() {
 	//guessing.vm.add("car accident");
 	//guessing.vm.add("furry convention");
 	//guessing.vm.add("aesthetic");
-	//guessing.vm.add("op");
 };
 
 guessing.view = function() {

@@ -35,8 +35,8 @@ tv_lobby.controller = function() {
 
 tv_lobby.view = function() {
 	return m("div.container", [
-		m("div.row", [m("h1", "Go to [url] on your phone!")]),
-		m("div.row", [m("h2", "Room Code: [room code]")]),
+		m("div.row", [m("h1", "Go to drawingishard.org on your phone!")]),
+		m("div.row", [m("h2", "Room Code: " + persistState.code)]),
 		m("div.row", [
 			m("div.three columns", [m("h4", "Players:")]),
 			m("div.nine columns", [

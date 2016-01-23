@@ -5,6 +5,48 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 // var p2p = require('socket.io-p2p-server').Server;
 // io.use(p2p);
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database('db.sqlite');
+
+var getPrompts = function(number, callback) {
+    // TODO: select > number randomly, then select top voted "number" from that
+    db.all("SELECT prompt FROM prompts ORDER BY RANDOM() LIMIT ?", number, function(err, prompts) {
+        callback(err, prompts);
+    });
+};
+
+/** Gets name of monitor-specific room. */
+var getMonitorRoom = function(code) {
+    return code + '-monitors';
+}
+
+var getIds = function(code) {
+    return Object.keys(io.nsps['/'].adapter.rooms[code].sockets);
+}
+
+var getMonitorIds = function(code) {
+    return getIds(getMonitorRoom(code));
+}
+
+var getPlayerIds = function(code) {
+    var monitorIds = getMonitorIds(code);
+    return getIds(code).filter(function(x) {return monitorIds.indexOf(x) < 0;});
+}
+
+/** Gets number of monitors in a room. */
+var getNumMonitors = function(code) {
+    return getIds(getMonitorRoom(code)).length;
+}
+
+/** Gets number of clients (monitors and players) in a room. */
+var getNumClients = function(code) {
+    return getIds(code).length;
+}
+
+/** Gets number of players in a room. */
+var getNumPlayers = function(code) {
+    return getNumClients(code) - getNumMonitors(code);
+}
 
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/index.html');
@@ -22,11 +64,25 @@ io.on('connection', function(socket){
     socket.on('connAsMonitor', function(data) {
         console.log('Connecting as monitor to room %s.', data.code);
         socket.join(data.code);
+        socket.join(getMonitorRoom(data.code));
     });
 
     socket.on('startGame', function(data) {
         console.log('Starting Game!');
-        io.to(data.code).emit('startGame');
+
+        getPrompts(getNumPlayers(data.code), function(err, prompts) {
+            console.log(prompts);
+            // create object mapping id's to prompts
+            var assignments = {};
+
+            getPlayerIds(data.code).forEach(function(val, i) {
+                assignments[val] = prompts[i];
+            });
+
+            console.log(assignments);
+
+            io.to(data.code).emit('startGame', assignments);
+        });
     });
 
 });

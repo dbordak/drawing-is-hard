@@ -1,0 +1,11 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE prompts(id INTEGER PRIMARY KEY AUTOINCREMENT, prompt TEXT NOT NULL, author TEXT NOT NULL, upvotes INTEGER DEFAULT 0, downvotes INTEGER DEFAULT 0);
+INSERT INTO "prompts" VALUES(1,'a horse with arms','DAN',0,0);
+INSERT INTO "prompts" VALUES(2,'losing your hand','KEVIN',0,0);
+INSERT INTO "prompts" VALUES(3,'a party horse','REVAN',0,0);
+INSERT INTO "prompts" VALUES(4,'getting frisky','DAN',0,0);
+INSERT INTO "prompts" VALUES(5,'a potato with arms','MAKS',0,0);
+INSERT INTO "prompts" VALUES(6,'Italy','DAN',0,0);
+INSERT INTO "prompts" VALUES(7,'a dog petting a dog','REVAN',0,0);
+COMMIT;
