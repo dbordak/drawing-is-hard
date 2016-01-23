@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>this is a choice app</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="icon" type="image/png" href="images/favicon.png">
+
+	<!-- temporary duplication since we're working locally -->
+	<link href="//fonts.googleapis.com/css?family=Raleway:400,300,60" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Raleway:400,300,60" rel="stylesheet">
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="css/skeleton.css" rel="stylesheet">
+	<link href="css/mifril.css" rel="stylesheet">
+	<script src="mithril.min.js"></script>
+</head>
+<body></body>
+<script>
+ var voter = {};
+
+ //model
+ voter.Choice = function(data) {
+     this.description = m.prop(data.description);
+	 this.votes = m.prop(0);
+ };
+ voter.ChoiceList = Array;
+
+ //viewmodel
+ voter.vm = {
+     init: function() {
+		 var vm = voter.vm;
+
+         //a running list of choices
+         vm.list = new voter.ChoiceList();
+
+		 // lock the vote after one click
+		 vm.lock = m.prop(false);
+
+		 // selected answer
+		 vm.selection = m.prop(0);
+
+         //adds a choice to the list, and clears the description field for user convenience
+         vm.add = function(desc) {
+             if (desc) {
+                 vm.list.push(new voter.Choice({description: desc}));
+             }
+         };
+     }
+ };
+
+ voter.controller = function() {
+	 voter.vm.init();
+
+	 // dummy selection
+	 voter.vm.add("a trashcan");
+	 voter.vm.add("smol birb");
+	 voter.vm.add("stone mask");
+	 voter.vm.add("Italy");
+	 voter.vm.add("i'd rather flex my knuckles");
+	 voter.vm.add("a horse");
+	 voter.vm.add("getting frisky");
+	 voter.vm.add("a dog petting a dog");
+	 voter.vm.add("a snow poff");
+ }
+
+ voter.view = function() {
+     return m("div.container", [
+		 m("div.row#timer", [
+			 m("h1", "Time remaining: lol")
+		 ]),
+		 voter.vm.list.map(function(task, index) {
+			 return m("div.row", [
+				 m("div.ten columns", [
+					 m("button.choice", {
+						 onclick: function() {
+							 if (!voter.vm.lock()) {
+								 task.votes(task.votes()+1);
+								 // TODO: send to server
+								 voter.vm.lock(true);
+								 voter.vm.selection(index);
+							 }
+						 },
+						 disabled: voter.vm.lock()
+					 }, task.description())
+				 ]),
+				 m("div.one column", [
+					 m("input", {type: "radio",
+								 name: index,
+								 value: "upvote"})
+				 ]),
+				 m("div.one column", [
+					 m("input", {type: "radio",
+								 name: index,
+								 value: "downvote"})
+				 ])
+			 ])
+		 }),
+		 m("div.row", [
+			 m("button", {onclick: function() {
+				 voter.vm.lock(false);
+			 }}, "Unlock")
+		 ])
+     ]);
+ };
+
+ m.mount(document.body, {controller: voter.controller, view: voter.view});
+</script>
+</html>

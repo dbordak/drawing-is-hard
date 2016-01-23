@@ -1,0 +1,11 @@
+#timer {
+	text-align: center;
+}
+
+button.choice {
+	width: 90%;
+}
+
+button.choice:disabled {
+	background-color: grey;
+}
