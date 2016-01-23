@@ -11,10 +11,10 @@ lobby.vm = new function() {
         socket.on('startGame', function(data) {
             m.route('/drawing');
         });
-    }
+    };
 
     return vm;
-}
+};
 
 lobby.controller = function() {
     lobby.vm.init();

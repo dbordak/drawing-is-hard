@@ -13,7 +13,7 @@ proposals.controller = function() {
 proposals.view = function() {
 	return m("div.container", [
 		m("div.row", [m("h1", "what is this thing")]),
-		m("div.row", [m("input.u-full-width", {
+		m("div.row", [m("input.u-full-width[type=text]", {
 			onchange: m.withAttr("value", proposals.vm.proposal),
 			value: proposals.vm.proposal()
 		})]),

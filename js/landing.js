@@ -16,16 +16,16 @@ landing.vm = (function() {
         };
 
         vm.connAsMonitor = function() {
-            console.log("connAsMonitor")
+            console.log("connAsMonitor");
             persistState.player = false;
             persistState.code = vm.code();
             socket.emit("connAsMonitor", {code: vm.code(), id: socket.id});
             m.route('/tv/lobby');
         };
-    }
+    };
 
     return vm;
-}())
+}());
 
 landing.controller = function() {
     landing.vm.init();
@@ -41,10 +41,10 @@ landing.view = function() {
 			m("div.eight columns", [
 				m("div.row", [
           m("div", "Room Code"),
-					m("input", {onchange: m.withAttr("value", landing.vm.code)}, "Room Code"),
+					m("input[type=text]", {onchange: m.withAttr("value", landing.vm.code)}, "Room Code"),
 
           m("div", "Player Name"),
-					m("input", {onchange: m.withAttr("value", landing.vm.name)}, "Player Name")
+					m("input[type=text]", {onchange: m.withAttr("value", landing.vm.name)}, "Player Name")
 				]),
 				m("div.row", [
 					m("div.six columns", [
