@@ -41,9 +41,7 @@ tv_lobby.view = function() {
 			m("div.three columns", [m("h4", "Players:")]),
 			m("div.nine columns", [
 				tv_lobby.vm.list.map(function(player, index) {
-					return m("div.row", [
-						m("h5", {}, player.name())
-					]);
+					return m("div.player-name", player.name());
 				})
 			])
 		])

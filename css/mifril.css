@@ -8,6 +8,7 @@ button.choice {
 
 button.choice:disabled {
 	background-color: grey;
+	color: white;
 }
 
 .prompt-vote-button {
@@ -16,4 +17,27 @@ button.choice:disabled {
 
 #prompt-vote-title {
 	text-align: center;
+}
+
+.literally label {
+	display: inline;
+}
+
+.player-name {
+	display: block;
+	margin: 2px;
+	font-size: 20pt;
+	text-transform: lowercase;
+	text-align: center;
+}
+
+.revealed-prompt, .revealed-author {
+	display: inline;
+	margin: 2px;
+}
+.revealed-prompt {
+	font-size: 20pt;
+}
+.revealed-votes {
+	margin: 2px;
 }

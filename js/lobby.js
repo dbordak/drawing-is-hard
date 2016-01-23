@@ -12,10 +12,10 @@ lobby.vm = new function() {
             persistState.prompt = data['/#'+socket.id];
             m.route('/drawing');
         });
-    }
+    };
 
     return vm;
-}
+};
 
 lobby.controller = function() {
     lobby.vm.init();
