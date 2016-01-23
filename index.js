@@ -3,8 +3,8 @@ var app = express();
 app.use(express.static(__dirname)); //TODO move static assets to a public directory
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var p2p = require('socket.io-p2p-server').Server;
-io.use(p2p);
+// var p2p = require('socket.io-p2p-server').Server;
+// io.use(p2p);
 
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/index.html');
