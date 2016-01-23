@@ -17,3 +17,7 @@ button.choice:disabled {
 #prompt-vote-title {
 	text-align: center;
 }
+
+.literally label {
+	display: inline;
+}
