@@ -24,6 +24,10 @@ tv_drawing.controller = function() {
 tv_drawing.view = function() {
 	return m("div.container", [
 		m("h1", "Look at your device!"),
-		m("h2", "lol seconds remaining!")
+		m("h2", [
+			m("span#tv-drawing-timer", "60"),
+			" seconds remaining!"
+		]),
+		m("script", "countdown(document.getElementById('tv-drawing-timer'), 60);")
 	]);
 };

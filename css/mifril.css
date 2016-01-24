@@ -42,10 +42,6 @@ button.button-row {
 	flex-flow: wrap;
 }
 
-.player-name:before {
-	content: "😊 ";
-}
-
 .player-name {
 	display: block;
 	margin: 10px;
