@@ -25,6 +25,11 @@ tv_lobby.vm = {
         tv_lobby.vm.add(data.name);
         m.endComputation();
     });
+
+      socket.on('startGame', function(data) {
+          m.route('/tv/drawing');
+      });
+
 	}
 };
 

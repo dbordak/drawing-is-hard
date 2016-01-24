@@ -85,6 +85,16 @@ io.on('connection', function(socket){
         });
     });
 
+    socket.on('drawing-submit', function(data) {
+        console.log('drawing received');
+        io.to(data.code).emit('drawing-submit', {id: socket.id, svg: data.svg});
+    });
+
+    socket.on('drawing-phase-complete', function(data) {
+        console.log('drawing phase complete');
+        io.to(data.code).emit('drawing-phase-complete');
+    });
+
 });
 
 
