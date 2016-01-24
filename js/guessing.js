@@ -72,12 +72,20 @@ guessing.view = function() {
 					}, task.description())
 				]),
 				m("div", [
-					m("input.guessing-upvote", {type: "radio",
-								name: index,
-								value: "upvote"}),
-					m("input.guessing-downvote", {type: "radio",
-								name: index,
-								value: "downvote"})
+					m("label", [
+						m("input.guessing-upvote", {
+							type: "radio",
+							name: index,
+							value: "upvote"}),
+						m("span.checkable")
+					]),
+					m("label", [
+						m("input.guessing-downvote.radio", {
+							type: "radio",
+							name: index,
+							value: "downvote"}),
+						m("span.checkable")
+					]),
 				])
 			]);
 		}),
