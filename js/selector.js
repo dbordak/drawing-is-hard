@@ -15,6 +15,7 @@ selector.view = function() {
 		m("a[href=?/tv/proposals]", "tv proposals"),
 		m("a[href=?/guessing]", "guessing"),
 		m("a[href=?/tv/guessing]", "tv guessing"),
+		m("a[href=?/reveal]", "reveal"),
 		m("a[href=?/tv/reveal]", "tv reveal"),
 		m("a[href=?/tv/score]", "tv score"),
 	]);
