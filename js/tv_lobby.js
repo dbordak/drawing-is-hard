@@ -11,26 +11,25 @@ tv_lobby.vm = {
 
 		vm.list = new tv_lobby.PlayerList();
 		vm.add = function(name) {
-			if (name) {
-				vm.list.push(new tv_lobby.Player({name: name}));
-			}
+        vm.list.push(new tv_lobby.Player({name: name}));
 		};
+
+    socket.on('player-joined', function(data) {
+        m.startComputation();
+        console.log("updating player list");
+        if(!persistState.players) {
+            persistState.players = [];
+        }
+        persistState.players.push(data);
+
+        tv_lobby.vm.add(data.name);
+        m.endComputation();
+    });
 	}
 };
 
 tv_lobby.controller = function() {
 	tv_lobby.vm.init();
-
-	tv_lobby.vm.add("me");
-	tv_lobby.vm.add("you");
-	tv_lobby.vm.add("kevin");
-	tv_lobby.vm.add("maks");
-	tv_lobby.vm.add("alex");
-	tv_lobby.vm.add("chris");
-	tv_lobby.vm.add("nikhil");
-	tv_lobby.vm.add("erin");
-	tv_lobby.vm.add("karla");
-	tv_lobby.vm.add("ashley");
 };
 
 tv_lobby.view = function() {
