@@ -36,11 +36,11 @@ tv_reveal.controller = function() {
 };
 
 tv_reveal.view = function() {
-	return m("div.container", [m("div.u-full-width", [
-		m("div.six columns", [
+	return m("div.container", [m("div.row", [
+		m("div.half", [
 			"[picture of a horse]"
 		]),
-		m("div.six columns", [
+		m("div.half", [
 			tv_reveal.vm.list.map(function(prompt, index) {
 				return m("div.row", [
 					m("p.revealed-prompt", prompt.description()),

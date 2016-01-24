@@ -70,7 +70,7 @@ tv_guessing.view = function() {
 			  m("div.six columns", [m("#canvas")]),
 			m("div.six columns", [
 				tv_guessing.vm.list.map(function(task, index) {
-					return m("h5.guessing-prompt", task.description());
+					return m("h5", task.description());
 				})
 			])
 		]),

@@ -2,11 +2,6 @@ button.choice {
 	width: 90%;
 }
 
-button:disabled {
-	background-color: grey;
-	color: white;
-}
-
 .landing-button, .landing-field, .prompt-vote-button, .centered-row {
 	text-align: center;
 }
@@ -17,10 +12,6 @@ button:disabled {
 
 .literally label {
 	display: inline;
-}
-
-.guessing-prompt {
-	margin: 2px;
 }
 
 .revealed-prompt, .revealed-author {
@@ -93,6 +84,24 @@ button.button-row {
 }
 
 .player-name{
-   animation-duration: 1s;
-   animation-name: fadein;
+	animation-duration: 1s;
+	animation-name: fadein;
+}
+
+.container {
+	position: relative;
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 0 20px;
+	box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; }
+body {
+  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

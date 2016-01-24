@@ -35,22 +35,22 @@ landing.view = function() {
 	return m("div.container", [
 		m("h1", "Drawing is Hard"),
 		m("div.row", [
-			m("div.four columns.landing-button", [
+			m("div.fourth.landing-button", [
 				m("button", "Create Lobby")
 			]),
-			m("div.eight columns", [
-				m("div.row.landing-field", [
+			m("div", [
+				m("div.landing-field", [
 					m("input[type=text][placeholder=Room Code]", {
 						oninput: m.withAttr("value", landing.vm.code)
 					})
 				]),
-				m("div.row.landing-field", [
+				m("div.landing-field", [
 					m("input[type=text][placeholder=Player Name]", {
 						oninput: m.withAttr("value", landing.vm.name)
 					})
 				]),
 				m("div.row", [
-					m("div.six columns.landing-button", [
+					m("div.half.landing-button", [
 						m("button", {
 							onclick: landing.vm.connAsPlayer,
 							disabled: (landing.vm.code() == "") || (landing.vm.name() == "")

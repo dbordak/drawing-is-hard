@@ -19,12 +19,12 @@ proposals.controller = function() {
 
 proposals.view = function() {
 	return m("div.container", [
-		m("div.row", [m("h1", "what is this thing")]),
-		m("div.row", [m("input.u-full-width[type=text]", {
+		m("h1", "what is this thing"),
+		m("input.u-full-width[type=text]", {
 			onchange: m.withAttr("value", proposals.vm.proposal),
 			value: proposals.vm.proposal()
-		})]),
-		m("div.row", [m("button.u-full-width", {
+		}),
+		m("button.u-full-width", {
 			onclick: function() {
 				console.log(proposals.vm.proposal());
           socket.emit('proposal-submit', {
@@ -33,7 +33,7 @@ proposals.view = function() {
               name: persistState.name
           });
 			}
-		}, "Submit")]),
-		m("div.row", [m("h2", "69 seconds remaining!")])
+		}, "Submit"),
+		m("h2", "lol seconds remaining!")
 	]);
 };
