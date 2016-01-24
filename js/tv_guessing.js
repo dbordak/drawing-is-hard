@@ -41,26 +41,26 @@ tv_guessing.controller = function() {
     });
 		m.endComputation();
 
+    socket.on('guess-submit', function(data) {
+        console.log('receiving guess');
+        m.startComputation();
+        if (!persistState.guesses) {
+            persistState.guesses = [];
+        }
+        persistState.guesses.push(data);
 
-	// dummy selection
-	// tv_guessing.vm.add("a trashcan");
-	// tv_guessing.vm.add("smol birb");
-	// tv_guessing.vm.add("stone mask");
-	// tv_guessing.vm.add("Italy");
-	// //tv_guessing.vm.add("i'd rather flex my knuckles");
-	// tv_guessing.vm.add("a horse");
-	// tv_guessing.vm.add("a horse with arms");
-	// tv_guessing.vm.add("getting frisky");
-	// tv_guessing.vm.add("a dog petting a dog");
-	// tv_guessing.vm.add("a snow poff");
-	// //tv_guessing.vm.add("a potato with arms");
-	// //tv_guessing.vm.add("the colonel");
-	// //tv_guessing.vm.add("a bird with arms");
-	// //tv_guessing.vm.add("two trucks");
-	// //tv_guessing.vm.add("a truck with arms");
-	// //tv_guessing.vm.add("losing your hand");
-	// //tv_guessing.vm.add("car accident");
-	// //tv_guessing.vm.add("furry convention");
+        if (persistState.guesses.length >= persistState.players.length) {
+            console.log("All guesses received!");
+            socket.emit('guess-phase-complete', {
+                code: persistState.code
+            });
+        }
+        m.endComputation();
+    });
+
+    socket.on('guess-phase-complete', function(data) {
+        m.route('/tv/reveal');
+    });
 };
 
 tv_guessing.view = function() {

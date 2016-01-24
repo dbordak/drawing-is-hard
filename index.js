@@ -117,6 +117,21 @@ io.on('connection', function(socket){
         });
     });
 
+    socket.on('guess-submit', function(data) {
+        console.log('guess received');
+        io.to(data.code).emit('guess-submit', {
+            proposal: data.proposal,
+            name: data.name
+        });
+    });
+
+    socket.on('guess-phase-complete', function(data) {
+        console.log('guess phase complete');
+        io.to(data.code).emit('guess-phase-complete', {
+            
+        });
+    });
+
 });
 
 

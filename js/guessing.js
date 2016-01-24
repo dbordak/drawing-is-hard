@@ -37,6 +37,10 @@ guessing.controller = function() {
         }
         guessing.vm.add(v.proposal);
     });
+
+    socket.on('guess-phase-complete', function(data) {
+        m.route('/reveal');
+    });
 };
 
 guessing.view = function() {
@@ -48,9 +52,9 @@ guessing.view = function() {
 					m("button.choice", {
 						onclick: function() {
 							if (!guessing.vm.lock()) {
-								// TODO: send to server
                   socket.emit('guess-submit', {
-                      guess: proposal.description(),
+                      code: persistState.code,
+                      proposal: proposal.description(),
                       name: persistState.name
                   });
 								guessing.vm.lock(true);
@@ -64,15 +68,15 @@ guessing.view = function() {
 					m("div", [
 						m("button", {
 							onclick: function() {
-								task.vote(1);
+								proposal.vote(1);
 							},
-							class: (task.vote() == 1)? "success" : ""
+							class: (proposal.vote() == 1)? "success" : ""
 						}, m("i.fa.fa-thumbs-up")),
 						m("button", {
 							onclick: function() {
-								task.vote(-1);
+								proposal.vote(-1);
 							},
-							class: (task.vote() == -1)? "error" : ""
+							class: (proposal.vote() == -1)? "error" : ""
 						}, m("i.fa.fa-thumbs-down"))
 					])
 				])
