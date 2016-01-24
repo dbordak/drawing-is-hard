@@ -30,27 +30,33 @@ guessing.vm = {
 };
 
 guessing.controller = function() {
-	guessing.vm.init();
+    guessing.vm.init();
+    persistState.proposals.forEach(function(v, i) {
+        if (persistState.guess_index == i) {
+            guessing.vm.add(persistState.prompt);
+        }
+        guessing.vm.add(v.proposal);
+    });
 
 	// dummy selection
-	guessing.vm.add("a trashcan");
-	guessing.vm.add("smol birb");
-	guessing.vm.add("stone mask");
-	guessing.vm.add("Italy");
-	//guessing.vm.add("i'd rather flex my knuckles");
-	guessing.vm.add("a party horse");
-	guessing.vm.add("a horse with arms");
-	guessing.vm.add("getting frisky");
-	guessing.vm.add("a dog petting a dog");
-	guessing.vm.add("a potato with arms");
-	//guessing.vm.add("the colonel");
-	//guessing.vm.add("a bird with arms");
-	//guessing.vm.add("two trucks");
-	//guessing.vm.add("a truck with arms");
-	//guessing.vm.add("losing your hand");
-	//guessing.vm.add("car accident");
-	//guessing.vm.add("furry convention");
-	//guessing.vm.add("aesthetic");
+	// guessing.vm.add("a trashcan");
+	// guessing.vm.add("smol birb");
+	// guessing.vm.add("stone mask");
+	// guessing.vm.add("Italy");
+	// //guessing.vm.add("i'd rather flex my knuckles");
+	// guessing.vm.add("a party horse");
+	// guessing.vm.add("a horse with arms");
+	// guessing.vm.add("getting frisky");
+	// guessing.vm.add("a dog petting a dog");
+	// guessing.vm.add("a potato with arms");
+	// //guessing.vm.add("the colonel");
+	// //guessing.vm.add("a bird with arms");
+	// //guessing.vm.add("two trucks");
+	// //guessing.vm.add("a truck with arms");
+	// //guessing.vm.add("losing your hand");
+	// //guessing.vm.add("car accident");
+	// //guessing.vm.add("furry convention");
+	// //guessing.vm.add("aesthetic");
 };
 
 guessing.view = function() {

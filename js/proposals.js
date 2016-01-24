@@ -8,6 +8,13 @@ proposals.vm = {
 
 proposals.controller = function() {
 	proposals.vm.init();
+
+    socket.on('proposal-phase-complete', function(data) {
+        persistState.proposals = data.proposals;
+        persistState.prompt = data.prompt;
+        persistState.guess_index = data.guess_index;
+        m.route('/guessing');
+    });
 };
 
 proposals.view = function() {
@@ -20,6 +27,11 @@ proposals.view = function() {
 		m("button.u-full-width", {
 			onclick: function() {
 				console.log(proposals.vm.proposal());
+          socket.emit('proposal-submit', {
+              code: persistState.code,
+              proposal: proposals.vm.proposal(),
+              name: persistState.name
+          });
 			}
 		}, "Submit"),
 		m("h2", "lol seconds remaining!")

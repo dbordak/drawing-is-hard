@@ -90,13 +90,31 @@ io.on('connection', function(socket){
         io.to(data.code).emit('drawing-submit', {
             id: socket.id,
             svg: data.svg,
-            prompt: data.prompt
+            prompt: data.prompt,
+            guess_index: data.guess_index
         });
     });
 
     socket.on('drawing-phase-complete', function(data) {
         console.log('drawing phase complete');
         io.to(data.code).emit('drawing-phase-complete');
+    });
+
+    socket.on('proposal-submit', function(data) {
+        console.log('proposal received');
+        io.to(data.code).emit('proposal-submit', {
+            proposal: data.proposal,
+            name: data.name
+        });
+    });
+
+    socket.on('proposal-phase-complete', function(data) {
+        console.log('proposal phase complete');
+        io.to(data.code).emit('proposal-phase-complete', {
+            proposals: data.proposals,
+            prompt: data.prompt,
+            guess_index: data.guess_index
+        });
     });
 
 });
