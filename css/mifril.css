@@ -57,3 +57,7 @@ html, body {
 button.button-row {
 	margin: 0 10px;
 }
+
+.literally {
+	width: 100%;
+}
