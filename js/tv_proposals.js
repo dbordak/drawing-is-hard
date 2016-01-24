@@ -30,10 +30,14 @@ tv_proposals.controller = function() {
 
 tv_proposals.view = function() {
 	return m("div.container", [
-		  m("h1", "Some person drew this:"),
-		  m("div#canvas"),
-		  m("h2", "What do you think it is?"),
-		  m("h2", "69 seconds remaining!"),
-      m("script", "document.getElementById('canvas').innerHTML = persistState.activeDrawing.svg;")
+		m("h1", "Some person drew this:"),
+		m("div#canvas"),
+		m("h2", "What do you think it is?"),
+		m("h2", [
+			m("span#tv-drawing-timer", "60"),
+			" seconds remaining!"
+		]),
+		m("script", "countdown(document.getElementById('tv-drawing-timer'), 60);"),
+		m("script", "document.getElementById('canvas').innerHTML = persistState.activeDrawing.svg;")
 	]);
 };

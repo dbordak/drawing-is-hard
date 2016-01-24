@@ -34,6 +34,10 @@ proposals.view = function() {
           });
 			}
 		}, "Submit"),
-		m("h2", "lol seconds remaining!")
+		m("h2", [
+			m("span#proposals-timer", "60"),
+			" seconds remaining!"
+		]),
+		m("script", "countdown(document.getElementById('proposals-timer'), 60);")
 	]);
 };

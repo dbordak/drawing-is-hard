@@ -45,7 +45,6 @@ guessing.controller = function() {
 
 guessing.view = function() {
 	return m("div.container", [
-		m("h1", "Time remaining: lol"),
 		guessing.vm.list.map(function(proposal, index) {
 			return m("div.row", [
 				m("div.four-fifth", [
@@ -81,6 +80,11 @@ guessing.view = function() {
 					])
 				])
 			]);
-		})
+		}),
+		m("h2", [
+			m("span#guessing-timer", "60"),
+			" seconds remaining!"
+		]),
+		m("script", "countdown(document.getElementById('guessing-timer'), 60);")
 	]);
 };

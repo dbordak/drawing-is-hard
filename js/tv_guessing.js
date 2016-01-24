@@ -65,7 +65,6 @@ tv_guessing.controller = function() {
 
 tv_guessing.view = function() {
 	return m("div.container", [
-		m("h1", "Time remaining: lol"),
 		m("div.row", [
 			m("div.half", [m("#canvas")]),
 			m("div.half", [
@@ -74,6 +73,11 @@ tv_guessing.view = function() {
 				})
 			])
 		]),
+		m("h2", [
+			m("span#tv-guessing-timer", "60"),
+			" seconds remaining!"
+		]),
+		m("script", "countdown(document.getElementById('tv-guessing-timer'), 60);"),
 		m("script", "document.getElementById('canvas').innerHTML = persistState.activeDrawing.svg;")
 	]);
 };
