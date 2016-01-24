@@ -132,6 +132,14 @@ io.on('connection', function(socket){
         });
     });
 
+    // we're bundling "reveal" and "score update" into one
+    socket.on('reveal-phase-complete', function(data) {
+        console.log('reveal phase complete');
+        io.to(data.code).emit('reveal-phase-complete', {
+            
+        });
+    })
+
 });
 
 

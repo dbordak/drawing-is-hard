@@ -15,28 +15,33 @@ tv_score.vm = {
 
 		vm.list = new tv_score.PlayerList();
 
-		vm.add = function(name, score) {
-			if (name && score) {
-				vm.list.push(new tv_score.Player({name: name, score: score, points: 0}));
+		  vm.add = function(name, score, points) {
+			if (name) {
+				vm.list.push(new tv_score.Player({name: name, score: score, points: points}));
 			}
 		};
-		vm.test = m.prop(false);
 	}
 };
 
 tv_score.controller = function() {
 	tv_score.vm.init();
 
-	tv_score.vm.add("me", 5);
-	tv_score.vm.add("you", 10);
-	tv_score.vm.add("kevin", 10);
-	tv_score.vm.add("maks", 5);
-	tv_score.vm.add("alex", 5);
-	tv_score.vm.add("chris", 5);
-	tv_score.vm.add("nikhil", 2);
-	tv_score.vm.add("erin", 1);
-	tv_score.vm.add("karla", 20);
-	tv_score.vm.add("ashley", 20);
+    m.startComputation();
+    persistState.players.forEach(function(v, i) {
+        tv_score.vm.add(v.name, persistState.scores[v.name], persistState.points[v.name]);
+    });
+    m.endComputation();
+
+	// tv_score.vm.add("me", 5);
+	// tv_score.vm.add("you", 10);
+	// tv_score.vm.add("kevin", 10);
+	// tv_score.vm.add("maks", 5);
+	// tv_score.vm.add("alex", 5);
+	// tv_score.vm.add("chris", 5);
+	// tv_score.vm.add("nikhil", 2);
+	// tv_score.vm.add("erin", 1);
+	// tv_score.vm.add("karla", 20);
+	// tv_score.vm.add("ashley", 20);
 };
 
 tv_score.view = function() {
