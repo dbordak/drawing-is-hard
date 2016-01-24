@@ -52,11 +52,11 @@ guessing.view = function() {
 					m("button.choice", {
 						onclick: function() {
 							if (!guessing.vm.lock()) {
-                  socket.emit('guess-submit', {
-                      code: persistState.code,
-                      proposal: proposal.description(),
-                      name: persistState.name
-                  });
+								socket.emit('guess-submit', {
+									code: persistState.code,
+									proposal: proposal.description(),
+									name: persistState.name
+								});
 								guessing.vm.lock(true);
 								guessing.vm.selection(index);
 							}
