@@ -10,12 +10,18 @@ button.choice {
 	text-align: center;
 }
 
-.revealed-prompt, .revealed-author {
-	display: inline;
-	margin: 2px;
-}
+/* .revealed-prompt, .revealed-author {
+   display: inline;
+   margin: 2px;
+   } */
+/* .revealed-prompt {
+   font-size: 20pt;
+   } */
 .revealed-prompt {
-	font-size: 20pt;
+	text-align: right;
+}
+.revealed-author {
+	text-align: left;
 }
 .revealed-votes {
 	margin: 2px;

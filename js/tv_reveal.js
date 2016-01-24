@@ -50,17 +50,17 @@ tv_reveal.controller = function() {
 
 tv_reveal.view = function() {
 	return m("div.container", [m("div.row", [
-		  m("div.half", [m("#canvas")]),
+		m("div.half", [m("#canvas")]),
 		m("div.half", [
 			tv_reveal.vm.list.map(function(prompt, index) {
-				return m("div.row", [
-					m("p.revealed-prompt", prompt.description()),
-					m("p.revealed-author", "by " + prompt.author()),
-					  m("p.revealed-votes", prompt.voters().join(', '))
-				]);
+				return [
+					m("div.row", [
+						m("h4.revealed-prompt", prompt.description()),
+						m("h5.revealed-author", "by " + prompt.author()),
+						m("h5.revealed-votes", prompt.voters().join(', '))
+					])
+				];
 			})
-		]),
-	]),
-                             m("script", "document.getElementById('canvas').innerHTML = persistState.activeDrawing.svg;")
-                            ]);
+		])
+	]), m("script", "document.getElementById('canvas').innerHTML = persistState.activeDrawing.svg;")]);
 };

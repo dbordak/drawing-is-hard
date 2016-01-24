@@ -66,14 +66,14 @@ tv_guessing.controller = function() {
 tv_guessing.view = function() {
 	return m("div.container", [
 		m("h1", "Time remaining: lol"),
-		m("div", [
-			  m("div.six columns", [m("#canvas")]),
-			m("div.six columns", [
+		m("div.row", [
+			m("div.half", [m("#canvas")]),
+			m("div.half", [
 				tv_guessing.vm.list.map(function(task, index) {
 					return m("h5", task.description());
 				})
 			])
 		]),
-      m("script", "document.getElementById('canvas').innerHTML = persistState.activeDrawing.svg;")
+		m("script", "document.getElementById('canvas').innerHTML = persistState.activeDrawing.svg;")
 	]);
 };
