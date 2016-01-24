@@ -37,44 +37,28 @@ guessing.controller = function() {
         }
         guessing.vm.add(v.proposal);
     });
-
-	// dummy selection
-	// guessing.vm.add("a trashcan");
-	// guessing.vm.add("smol birb");
-	// guessing.vm.add("stone mask");
-	// guessing.vm.add("Italy");
-	// //guessing.vm.add("i'd rather flex my knuckles");
-	// guessing.vm.add("a party horse");
-	// guessing.vm.add("a horse with arms");
-	// guessing.vm.add("getting frisky");
-	// guessing.vm.add("a dog petting a dog");
-	// guessing.vm.add("a potato with arms");
-	// //guessing.vm.add("the colonel");
-	// //guessing.vm.add("a bird with arms");
-	// //guessing.vm.add("two trucks");
-	// //guessing.vm.add("a truck with arms");
-	// //guessing.vm.add("losing your hand");
-	// //guessing.vm.add("car accident");
-	// //guessing.vm.add("furry convention");
-	// //guessing.vm.add("aesthetic");
 };
 
 guessing.view = function() {
 	return m("div.container", [
 		m("h1", "Time remaining: lol"),
-		guessing.vm.list.map(function(task, index) {
+		guessing.vm.list.map(function(proposal, index) {
 			return m("div.row", [
 				m("div.four-fifth", [
 					m("button.choice", {
 						onclick: function() {
 							if (!guessing.vm.lock()) {
 								// TODO: send to server
+                  socket.emit('guess-submit', {
+                      guess: proposal.description(),
+                      name: persistState.name
+                  });
 								guessing.vm.lock(true);
 								guessing.vm.selection(index);
 							}
 						},
 						disabled: guessing.vm.lock()
-					}, task.description())
+					}, proposal.description())
 				]),
 				m("div", [
 					m("div", [
@@ -93,11 +77,6 @@ guessing.view = function() {
 					])
 				])
 			]);
-		}),
-		m("div.row", [
-			m("button", {onclick: function() {
-				guessing.vm.lock(false);
-			}}, "Unlock")
-		])
+		})
 	]);
 };
