@@ -23,6 +23,6 @@ lobby.controller = function() {
 
 lobby.view = function() {
 	return m("div.container", [
-		  m("div.row", [m("button", {onclick: lobby.vm.ready}, "Ready")])
+		m("button", {onclick: lobby.vm.ready}, "Ready")
 	]);
 };

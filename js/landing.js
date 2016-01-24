@@ -39,12 +39,16 @@ landing.view = function() {
 				m("button", "Create Lobby")
 			]),
 			m("div.eight columns", [
-				m("div.row.landing-field", [m("input[type=text][placeholder=Room Code]", {
-					oninput: m.withAttr("value", landing.vm.code)
-				})]),
-				m("div.row.landing-field", [m("input[type=text][placeholder=Player Name]", {
-					oninput: m.withAttr("value", landing.vm.name)
-				})]),
+				m("div.row.landing-field", [
+					m("input[type=text][placeholder=Room Code]", {
+						oninput: m.withAttr("value", landing.vm.code)
+					})
+				]),
+				m("div.row.landing-field", [
+					m("input[type=text][placeholder=Player Name]", {
+						oninput: m.withAttr("value", landing.vm.name)
+					})
+				]),
 				m("div.row", [
 					m("div.six columns.landing-button", [
 						m("button", {

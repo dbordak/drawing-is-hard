@@ -11,7 +11,7 @@ button:disabled {
 	color: white;
 }
 
-.landing-button, .landing-field, .prompt-vote-button {
+.landing-button, .landing-field, .prompt-vote-button, .centered-row {
 	text-align: center;
 }
 
@@ -40,4 +40,20 @@ button:disabled {
 }
 .revealed-votes {
 	margin: 2px;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100%;
+	flex-direction: column;
+}
+
+html, body {
+	height: 100%;
+}
+
+button.button-row {
+	margin: 0 10px;
 }
