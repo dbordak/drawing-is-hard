@@ -11,24 +11,24 @@ tv_lobby.vm = {
 
 		vm.list = new tv_lobby.PlayerList();
 		vm.add = function(name) {
-        vm.list.push(new tv_lobby.Player({name: name}));
+			vm.list.push(new tv_lobby.Player({name: name}));
 		};
 
-    socket.on('player-joined', function(data) {
-        m.startComputation();
-        console.log("updating player list");
-        if(!persistState.players) {
-            persistState.players = [];
-        }
-        persistState.players.push(data);
+		socket.on('player-joined', function(data) {
+			m.startComputation();
+			console.log("updating player list");
+			if(!persistState.players) {
+				persistState.players = [];
+			}
+			persistState.players.push(data);
 
-        tv_lobby.vm.add(data.name);
-        m.endComputation();
-    });
+			tv_lobby.vm.add(data.name);
+			m.endComputation();
+		});
 
-      socket.on('startGame', function(data) {
-          m.route('/tv/drawing');
-      });
+		socket.on('startGame', function(data) {
+			m.route('/tv/drawing');
+		});
 
 	}
 };

@@ -58,7 +58,7 @@ button.button-row {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 100%;
+	min-height: 130px;
 	flex-direction: row;
 	flex-flow: wrap;
 }
@@ -80,4 +80,19 @@ button.button-row {
 
 .guessing-upvote, .guessing-downvote {
 	margin: 0 10px;
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.player-name{
+   animation-duration: 1s;
+   animation-name: fadein;
 }

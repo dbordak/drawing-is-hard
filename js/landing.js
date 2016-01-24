@@ -33,7 +33,7 @@ landing.controller = function() {
 
 landing.view = function() {
 	return m("div.container", [
-		m("div.row", [m("h1", "Drawing is Hard")]),
+		m("h1", "Drawing is Hard"),
 		m("div.row", [
 			m("div.four columns.landing-button", [
 				m("button", "Create Lobby")
