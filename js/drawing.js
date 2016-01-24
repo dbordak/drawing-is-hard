@@ -13,7 +13,11 @@ drawing.view = function() {
 		m("button.u-full-width", {
 			onclick: function() {
 				console.log(lc.getSVGString());
-          socket.emit('drawing-submit', {code: persistState.code, svg: lc.getSVGString()});
+          socket.emit('drawing-submit', {
+              code: persistState.code,
+              svg: lc.getSVGString(),
+              prompt: persistState.prompt.prompt
+          });
 			}
 		}, "Submit"),
 		m("script", "var lc = LC.init(document.getElementsByClassName('literally')[0], {imageURLPrefix: '/img'});")

@@ -87,7 +87,11 @@ io.on('connection', function(socket){
 
     socket.on('drawing-submit', function(data) {
         console.log('drawing received');
-        io.to(data.code).emit('drawing-submit', {id: socket.id, svg: data.svg});
+        io.to(data.code).emit('drawing-submit', {
+            id: socket.id,
+            svg: data.svg,
+            prompt: data.prompt
+        });
     });
 
     socket.on('drawing-phase-complete', function(data) {
