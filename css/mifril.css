@@ -1,7 +1,3 @@
-#timer {
-	text-align: center;
-}
-
 button.choice {
 	width: 90%;
 }
@@ -21,6 +17,10 @@ button:disabled {
 
 .literally label {
 	display: inline;
+}
+
+.guessing-prompt {
+	margin: 2px;
 }
 
 .revealed-prompt, .revealed-author {
@@ -76,4 +76,8 @@ button.button-row {
 	background: #eee;
 	padding: 0 8px;
 	border-radius: 10px;
+}
+
+.guessing-upvote, .guessing-downvote {
+	margin: 0 10px;
 }

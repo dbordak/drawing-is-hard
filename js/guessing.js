@@ -55,11 +55,9 @@ guessing.controller = function() {
 
 guessing.view = function() {
 	return m("div.container", [
-		m("div.row#timer", [
-			m("h1", "Time remaining: lol")
-		]),
+		m("h1", "Time remaining: lol"),
 		guessing.vm.list.map(function(task, index) {
-			return m("div.row", [
+			return m("div.u-full-width", [
 				m("div.ten columns", [
 					m("button.choice", {
 						onclick: function() {
@@ -73,13 +71,11 @@ guessing.view = function() {
 						disabled: guessing.vm.lock()
 					}, task.description())
 				]),
-				m("div.one column", [
-					m("input", {type: "radio",
+				m("div.two columns", [
+					m("input.guessing-upvote", {type: "radio",
 								name: index,
-								value: "upvote"})
-				]),
-				m("div.one column", [
-					m("input", {type: "radio",
+								value: "upvote"}),
+					m("input.guessing-downvote", {type: "radio",
 								name: index,
 								value: "downvote"})
 				])
