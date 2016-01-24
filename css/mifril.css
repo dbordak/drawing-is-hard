@@ -10,21 +10,15 @@ button.choice {
 	text-align: center;
 }
 
-/* .revealed-prompt, .revealed-author {
-   display: inline;
-   margin: 2px;
-   } */
-/* .revealed-prompt {
-   font-size: 20pt;
-   } */
 .revealed-prompt {
 	text-align: right;
 }
 .revealed-author {
 	text-align: left;
+	vertical-align: bottom;
 }
 .revealed-votes {
-	margin: 2px;
+	vertical-align: middle;
 }
 
 html, body {
@@ -103,4 +97,8 @@ button {
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 300;
+}
+
+#canvas svg {
+	width: 100%;
 }

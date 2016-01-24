@@ -45,18 +45,17 @@ guessing.controller = function() {
 
 guessing.view = function() {
 	return m("div.container", [
-		m("h1", "Time remaining: lol"),
 		guessing.vm.list.map(function(proposal, index) {
 			return m("div.row", [
 				m("div.four-fifth", [
 					m("button.choice", {
 						onclick: function() {
 							if (!guessing.vm.lock()) {
-                  socket.emit('guess-submit', {
-                      code: persistState.code,
-                      proposal: proposal.description(),
-                      name: persistState.name
-                  });
+								socket.emit('guess-submit', {
+									code: persistState.code,
+									proposal: proposal.description(),
+									name: persistState.name
+								});
 								guessing.vm.lock(true);
 								guessing.vm.selection(index);
 							}
@@ -81,6 +80,11 @@ guessing.view = function() {
 					])
 				])
 			]);
-		})
+		}),
+		m("h2", [
+			m("span#guessing-timer", "60"),
+			" seconds remaining!"
+		]),
+		m("script", "countdown(document.getElementById('guessing-timer'), 60);")
 	]);
 };
