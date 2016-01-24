@@ -57,8 +57,8 @@ guessing.view = function() {
 	return m("div.container", [
 		m("h1", "Time remaining: lol"),
 		guessing.vm.list.map(function(task, index) {
-			return m("div.u-full-width", [
-				m("div.ten columns", [
+			return m("div.row", [
+				m("div.four-fifth", [
 					m("button.choice", {
 						onclick: function() {
 							if (!guessing.vm.lock()) {
@@ -71,7 +71,7 @@ guessing.view = function() {
 						disabled: guessing.vm.lock()
 					}, task.description())
 				]),
-				m("div.two columns", [
+				m("div", [
 					m("input.guessing-upvote", {type: "radio",
 								name: index,
 								value: "upvote"}),
