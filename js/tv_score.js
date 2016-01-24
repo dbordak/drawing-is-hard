@@ -20,6 +20,7 @@ tv_score.vm = {
 				vm.list.push(new tv_score.Player({name: name, score: score, points: 0}));
 			}
 		};
+		vm.test = m.prop(false);
 	}
 };
 
@@ -53,7 +54,8 @@ tv_score.view = function() {
 							player.name()
 						]),
 						m("td", [
-							player.oldScore() + " + " + player.addedPoints() + " = " + player.oldScore() + player.addedPoints()
+							player.oldScore() + " + " + player.addedPoints() + " = " +
+								(player.oldScore() + player.addedPoints())
 						])
 					]);
 				})

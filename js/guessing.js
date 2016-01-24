@@ -3,7 +3,7 @@ var guessing = {};
 //model
 guessing.Choice = function(data) {
 	this.description = m.prop(data.description);
-	this.votes = m.prop(0);
+	this.vote = m.prop(0);
 };
 guessing.ChoiceList = Array;
 
@@ -68,7 +68,6 @@ guessing.view = function() {
 					m("button.choice", {
 						onclick: function() {
 							if (!guessing.vm.lock()) {
-								task.votes(task.votes()+1);
 								// TODO: send to server
 								guessing.vm.lock(true);
 								guessing.vm.selection(index);
@@ -78,20 +77,20 @@ guessing.view = function() {
 					}, task.description())
 				]),
 				m("div", [
-					m("label", [
-						m("input.guessing-upvote", {
-							type: "radio",
-							name: index,
-							value: "upvote"}),
-						m("span.checkable")
-					]),
-					m("label", [
-						m("input.guessing-downvote.radio", {
-							type: "radio",
-							name: index,
-							value: "downvote"}),
-						m("span.checkable")
-					]),
+					m("div", [
+						m("button", {
+							onclick: function() {
+								task.vote(1);
+							},
+							class: (task.vote() == 1)? "success" : ""
+						}, m("i.fa.fa-thumbs-up")),
+						m("button", {
+							onclick: function() {
+								task.vote(-1);
+							},
+							class: (task.vote() == -1)? "error" : ""
+						}, m("i.fa.fa-thumbs-down"))
+					])
 				])
 			]);
 		}),
