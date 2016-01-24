@@ -43,7 +43,13 @@ tv_lobby.view = function() {
 		m("h2", "Room Code: " + persistState.code),
 		m("div#player-list", [
 			tv_lobby.vm.list.map(function(player, index) {
-				return m("div.player-name", player.name());
+				return m("div.player-name", [
+					m("i.fa", {
+						class: (player.name() === "kevin")? "fa-frown-o": "fa-smile-o"
+					}),
+					" ",
+					player.name()
+				]);
 			})
 		])
 	]);
