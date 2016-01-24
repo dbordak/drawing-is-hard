@@ -23,14 +23,6 @@ button:disabled {
 	display: inline;
 }
 
-.player-name {
-	display: block;
-	margin: 2px;
-	font-size: 20pt;
-	text-transform: lowercase;
-	text-align: center;
-}
-
 .revealed-prompt, .revealed-author {
 	display: inline;
 	margin: 2px;
@@ -60,4 +52,28 @@ button.button-row {
 
 .literally {
 	width: 100%;
+}
+
+#player-list {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100%;
+	flex-direction: row;
+	flex-flow: wrap;
+}
+
+.player-name:before {
+	content: "😊 ";
+}
+
+.player-name {
+	display: block;
+	margin: 10px;
+	font-size: 20pt;
+	text-transform: lowercase;
+	text-align: center;
+	background: #eee;
+	padding: 0 8px;
+	border-radius: 10px;
 }

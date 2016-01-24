@@ -34,15 +34,12 @@ tv_lobby.controller = function() {
 
 tv_lobby.view = function() {
 	return m("div.container", [
-		m("div.row", [m("h1", "Go to drawingishard.org on your phone!")]),
-		m("div.row", [m("h2", "Room Code: " + persistState.code)]),
-		m("div.row", [
-			m("div.three columns", [m("h4", "Players:")]),
-			m("div.nine columns", [
-				tv_lobby.vm.list.map(function(player, index) {
-					return m("div.player-name", player.name());
-				})
-			])
+		m("h1", "Go to drawingishard.org on your device!"),
+		m("h2", "Room Code: " + persistState.code),
+		m("div#player-list", [
+			tv_lobby.vm.list.map(function(player, index) {
+				return m("div.player-name", player.name());
+			})
 		])
 	]);
 };
