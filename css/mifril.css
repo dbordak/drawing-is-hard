@@ -6,12 +6,12 @@ button.choice {
 	width: 90%;
 }
 
-button.choice:disabled {
+button:disabled {
 	background-color: grey;
 	color: white;
 }
 
-.prompt-vote-button {
+.landing-button, .landing-field, .prompt-vote-button {
 	text-align: center;
 }
 
