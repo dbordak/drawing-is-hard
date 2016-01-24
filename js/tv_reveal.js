@@ -36,7 +36,7 @@ tv_reveal.controller = function() {
 };
 
 tv_reveal.view = function() {
-	return m("div.container", [m("div.row", [
+	return m("div.container", [m("div.u-full-width", [
 		m("div.six columns", [
 			"[picture of a horse]"
 		]),

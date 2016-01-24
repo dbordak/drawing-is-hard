@@ -55,18 +55,14 @@ tv_guessing.controller = function() {
 
 tv_guessing.view = function() {
 	return m("div.container", [
-		m("div.row#timer", [
-			m("h1", "Time remaining: lol")
-		]),
-		m("div.row", [
+		m("h1", "Time remaining: lol"),
+		m("div", [
 			m("div.six columns", [
 				"[picture of a horse]"
 			]),
 			m("div.six columns", [
 				tv_guessing.vm.list.map(function(task, index) {
-					return m("div.row", [
-						m("h5", task.description())
-					]);
+					return m("h5.guessing-prompt", task.description());
 				})
 			])
 		])
