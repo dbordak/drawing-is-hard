@@ -16,7 +16,8 @@ drawing.view = function() {
           socket.emit('drawing-submit', {
               code: persistState.code,
               svg: lc.getSVGString(),
-              prompt: persistState.prompt.prompt
+              prompt: persistState.prompt.prompt,
+              guess_index: Math.floor(Math.random() * persistState.numPlayers)
           });
 			}
 		}, "Submit"),

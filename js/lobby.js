@@ -10,6 +10,7 @@ lobby.vm = new function() {
 
         socket.on('startGame', function(data) {
             persistState.prompt = data['/#'+socket.id];
+            persistState.numPlayers = Object.keys(data).length;
             m.route('/drawing');
         });
     };
